@@ -2,6 +2,7 @@ package br.com.az;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
 
 import java.util.Properties;
@@ -10,6 +11,8 @@ public class NewOrderMain {
 
     public static void main (String [] args){
         var producer = new KafkaProducer<String, String>(properties());
+        var value = "123, 456 , 789";
+        var record = new ProducerRecord<String, String>("Ecommerce_NEW_ORDER", value, value);
         producer.send(record);
     }
 
